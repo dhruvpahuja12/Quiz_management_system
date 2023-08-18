@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam</title>
+</head>
+<body>
+    <h1>Welcome, {{ user_name }}! The {{ exam_name }} is starting...</h1>
+    {% for question in questions %}
+        <h2>Question {{ loop.index }}: {{ question.question }}</h2>
+        <form method="post" action="{{ url_for('check_answer', user_name=user_name, exam_name=exam_name, question_idx=loop.index) }}">
+            {% for option in question.options %}
+                <input type="radio" name="answer" value="{{ loop.index }}" id="option{{ loop.index }}">
+                <label for="option{{ loop.index }}">{{ option }}</label><br>
+            {% endfor %}
+            <input type="submit" value="Submit Answer">
+        </form>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conduct Exam</title>
+</head>
+<body>
+    <h1>Conduct Exam</h1>
+    <form action="/conduct_exam" method="post">
+        <label for="user_name">Enter your Name:</label>
+        <input type="text" name="user_name" id="user_name" required>
+        <label for="exam_name">Select Exam:</label>
+        <select name="exam_name" id="exam_name" required>
+            {% for exam_name in exam_names %}
+                <option value="{{ exam_name }}">{{ exam_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Start Exam">
+    </form>
+</body>
+</html>
